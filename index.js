@@ -1,7 +1,10 @@
 "use strict";
 
 exports.convert = function convert(input) {
+    var result= {branchNumber, branchName, branchNameKatakana,accountNumber,accountNumberFilled};
     //TODO
+
+    return result;
 }
 
 /**
