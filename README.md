@@ -16,7 +16,9 @@ const jpbank = require('jpbank-number-converter');
 
 
 ```js
-var result = jpbank.convert({signNumber: '12345',number:'12345671'});
+var result = jpbank.convert({signNumber: '12345',jpbankNumber:'12345671'});
+// signNumber: ゆうちょ銀行で「記号」と称される、ハイフンより前の番号
+// jpbankNumber: ゆうちょ銀行で「番号」と称される、ハイフンより後の番号
 
 console.log(result.branchNumber); //238
 console.log(result.branchName); //二三八
