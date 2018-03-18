@@ -8,10 +8,10 @@ exports.convert = function convert(input) {
 
     // ゆうちょ店番末尾の文字列を指定
     let branchNumberSuffix = '8';
-    if (input.middleNumber == '1') { //振替口座の場合
+    if (input.jpbankMiddleNumber == '1') { //振替口座の場合
         branchNumberSuffix = '9';
-    } else if (input.middleNumber && input.middleNumber != '1') {
-        throw new Error(`記号と口座番号の間の数字(${input.middleNumber})が不正です。1か空欄でなければなりません。`);
+    } else if (input.jpbankMiddleNumber && input.jpbankMiddleNumber != '1') {
+        throw new Error(`記号と口座番号の間の数字(${input.jpbankMiddleNumber})が不正です。1か空欄でなければなりません。`);
     }
 
     // ゆうちょ記号から店番・店名を生成
@@ -26,8 +26,9 @@ exports.convert = function convert(input) {
     // ゆうちょ番号から口座番号を生成
 
     //振替口座の場合
-    if (input.middleNumber == '1') {
-
+    let tmpAccountNumber;
+    if (input.jpbankMiddleNumber == '1') {
+        result.accountNumber = input.jpbankNumber; //番号そのまま
     } else { //総合口座・通常口座などの場合
         if (input.jpbankNumber.slice(-1) == '1') {
             result.accountNumber = input.jpbankNumber.slice(0, -1); // 末尾の1を削除
@@ -36,7 +37,14 @@ exports.convert = function convert(input) {
         }
     }
 
-    //TODO
+    //7桁未満の場合に口座番号の先頭を0で埋める
+    let zeroForFill = '';
+    if (result.accountNumber.length < 7) {
+        for (var i = 0; i < 7 - result.accountNumber.length; i++) {
+            zeroForFill += '0';
+        }
+    }
+    result.accountNumberFilled = zeroForFill + result.accountNumber;
 
     return result;
 }
