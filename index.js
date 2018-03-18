@@ -7,8 +7,10 @@ exports.convert = function convert(input) {
 
     if (input.jpbankSignNumber.slice(0,1) == '0') { //振替口座の場合（記号の先頭が0）
         result.isTransferAccount = true;
+    } else {
+        result.isTransferAccount = false;
     }
-    //
+    
     // ゆうちょ店番末尾の文字列を指定
     let branchNumberSuffix = '8';
     if (result.isTransferAccount) { //振替口座の場合（記号の先頭が0）
