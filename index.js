@@ -5,9 +5,13 @@ exports.convert = function convert(input) {
     var result = new Object();
     //{branchNumber, branchName, branchNameKatakana,accountNumber,accountNumberFilled};
 
+    if (input.jpbankSignNumber.slice(0,1) == '0') { //振替口座の場合（記号の先頭が0）
+        result.isTransferAccount = true;
+    }
+    //
     // ゆうちょ店番末尾の文字列を指定
     let branchNumberSuffix = '8';
-    if (input.jpbankSignNumber.slice(0,1) == '0') { //振替口座の場合（記号の先頭が0）
+    if (result.isTransferAccount) { //振替口座の場合（記号の先頭が0）
         branchNumberSuffix = '9';
     }
 
@@ -21,7 +25,7 @@ exports.convert = function convert(input) {
     }
 
     // ゆうちょ番号から口座番号を生成
-    if (input.jpbankSignNumber.slice(0,1) == '0') { //振替口座の場合
+    if (result.isTransferAccount) { //振替口座の場合
         result.accountNumber = input.jpbankNumber; //番号そのまま
     } else { //総合口座・通常口座などの場合
         if (input.jpbankNumber.slice(-1) == '1') {
