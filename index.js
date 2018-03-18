@@ -1,5 +1,4 @@
 "use strict";
-
 const kansuji = require('./kansuji.json');
 
 exports.convert = function convert(input) {
@@ -24,10 +23,7 @@ exports.convert = function convert(input) {
     }
 
     // ゆうちょ番号から口座番号を生成
-
-    //振替口座の場合
-    let tmpAccountNumber;
-    if (input.jpbankMiddleNumber == '1') {
+    if (input.jpbankMiddleNumber == '1') { //振替口座の場合
         result.accountNumber = input.jpbankNumber; //番号そのまま
     } else { //総合口座・通常口座などの場合
         if (input.jpbankNumber.slice(-1) == '1') {
@@ -57,7 +53,6 @@ exports.convert = function convert(input) {
  */
 function validateNumber(arg, digit) {
     if (typeof (arg) === 'string') {
-
         if (arg.match(/\D/)) {
             throw new Error(`${arg} には半角数字以外の文字が含まれています`);
         }
@@ -69,7 +64,6 @@ function validateNumber(arg, digit) {
         }
 
         return true;
-
     } else {
         throw new TypeError(`${arg}がstringではありません`);
     }
@@ -96,10 +90,7 @@ function generateBranchName(arg, katakana) {
         if (katakana == true) {
             replaceJa = replacer[0].katakana;
         }
-
         target = target.replace(new RegExp(replacer[0].number, 'g'), replaceJa);
-
     }
-
     return target;
 }
