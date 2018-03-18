@@ -16,15 +16,16 @@ const jpbank = require('jpbank-number-converter');
 
 
 ```js
-var result = jpbank.convert({jpbankSignNumber: '12345',jpbankNumber:'12345671'});
+var result = jpbank.convert({jjpbankSignNumber: '01940',jpbankMiddleNumber:'1',jpbankNumber:'12345'});
 // jpbankSignNumber: ゆうちょ銀行で「記号」と称される、ハイフンより前の番号
+// jpbankMiddleNumber: 01940-1-12345 のように、2つのハイフンに挟まれる番号
 // jpbankNumber: ゆうちょ銀行で「番号」と称される、ハイフンより後の番号
 
-console.log(result.branchNumber); //238
-console.log(result.branchName); //二三八
-console.log(result.branchNameKatakana); //ニサンハチ
-console.log(result.accountNumber); //1234567
-console.log(result.accountNumberFilled); // 口座番号が7桁未満だった場合、先頭から0で埋めたもの
+console.log(result.branchNumber); //199
+console.log(result.branchName); //一九九
+console.log(result.branchNameKatakana); //イチキユウキユウ
+console.log(result.accountNumber); //12345
+console.log(result.accountNumberFilled); // 0012345（口座番号が7桁未満だった場合、先頭から0で埋めたもの）
 ```
 
 ## 免責事項
