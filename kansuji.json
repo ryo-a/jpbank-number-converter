@@ -1,51 +1,51 @@
 [
     {
-        "number": 0,
+        "number": "0",
         "kanji": "〇",
         "katakana": "ゼロ"
     },
     {
-        "number": 1,
+        "number": "1",
         "kanji": "一",
         "katakana": "イチ"
     },
     {
-        "number": 2,
+        "number": "2",
         "kanji": "二",
         "katakana": "ニ"
     },
     {
-        "number": 3,
+        "number": "3",
         "kanji": "三",
         "katakana": "サン"
     },
     {
-        "number": 4,
+        "number": "4",
         "kanji": "四",
         "katakana": "ヨン"
     },
     {
-        "number": 5,
+        "number": "5",
         "kanji": "五",
         "katakana": "ゴ"
     },
     {
-        "number": 6,
+        "number": "6",
         "kanji": "六",
         "katakana": "ロク"
     },
     {
-        "number": 7,
+        "number": "7",
         "kanji": "七",
         "katakana": "ナナ"
     },
     {
-        "number": 8,
+        "number": "8",
         "kanji": "八",
         "katakana": "ハチ"
     },
     {
-        "number": 9,
+        "number": "9",
         "kanji": "九",
         "katakana": "キユウ"
     }
