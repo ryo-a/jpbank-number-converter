@@ -1,5 +1,7 @@
 # jpbank-number-converter
 
+[![CircleCI](https://circleci.com/gh/ryo-a/jpbank-number-converter/tree/master.svg?style=svg)](https://circleci.com/gh/ryo-a/jpbank-number-converter/tree/master)
+
 ゆうちょ銀行（Japan Post Bank）のキャッシュカードや通帳に記載されている、ゆうちょ独自の番号から他の銀行口座とやりとりする場合に使う口座番号・支店名などに変換するライブラリです。ゆうちょ銀行・日本郵政などとは一切関係ない非公式なものです。
 
 ゆうちょ銀行はその歴史的な経緯から一般的な金融機関と異なる管理番号が使用されていますが、現在は他の金融機関に準じた番号が用意されています。  
