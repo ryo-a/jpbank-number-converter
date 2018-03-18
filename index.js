@@ -6,24 +6,35 @@ exports.convert = function convert(input) {
     var result = new Object();
     //{branchNumber, branchName, branchNameKatakana,accountNumber,accountNumberFilled};
 
-    // 店番末尾の文字列を指定
+    // ゆうちょ店番末尾の文字列を指定
     let branchNumberSuffix = '8';
-    if (input.middleNumber && input.middleNumber == '1') { //振替口座の場合
+    if (input.middleNumber == '1') { //振替口座の場合
         branchNumberSuffix = '9';
     } else if (input.middleNumber && input.middleNumber != '1') {
         throw new Error(`記号と口座番号の間の数字(${input.middleNumber})が不正です。1か空欄でなければなりません。`);
     }
 
-    //記号
-    if (input.signNumber && validateNumber(input.signNumber, 5)) {
-        result.branchNumber = input.signNumber.substr(1, 2) + branchNumberSuffix;
+    // ゆうちょ記号から店番・店名を生成
+    if (input.jpbankSignNumber && validateNumber(input.jpbankSignNumber, 5)) {
+        result.branchNumber = input.jpbankSignNumber.substr(1, 2) + branchNumberSuffix;
         result.branchName = generateBranchName(result.branchNumber);
         result.branchNameKatakana = generateBranchName(result.branchNumber, true);
     } else {
         throw new Error('記号が不正です');
     }
 
-    //口座番号
+    // ゆうちょ番号から口座番号を生成
+
+    //振替口座の場合
+    if (input.middleNumber == '1') {
+
+    } else { //総合口座・通常口座などの場合
+        if (input.jpbankNumber.slice(-1) == '1') {
+            result.accountNumber = input.jpbankNumber.slice(0, -1); // 末尾の1を削除
+        } else {
+            throw new Error(`番号(${input.jpbankNumber})が不正です。 振替口座以外の場合、番号の最後の文字 1 となるはずです。`);
+        }
+    }
 
     //TODO
 
