@@ -15,7 +15,7 @@
 ```js
 const jpbank = require('jpbank-number-converter');
 
-var result = jpbank.convert({jjpbankSignNumber: '11940',jpbankMiddleNumber:'1',jpbankNumber:'12345'});
+var result = jpbank.convert({jpbankSignNumber: '11940',jpbankMiddleNumber:'1',jpbankNumber:'12345'});
 // jpbankSignNumber: ゆうちょ銀行で「記号」と称される、ハイフンより前の番号
 // jpbankMiddleNumber: 01940-1-12345 のように、2つのハイフンに挟まれる番号（少なくとも現時点では計算には使用していません）
 // jpbankNumber: ゆうちょ銀行で「番号」と称される、ハイフンより後の番号
