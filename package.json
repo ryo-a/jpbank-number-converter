@@ -1,5 +1,6 @@
 {
   "name": "jpbank-number-converter",
+  "description":"ゆうちょ銀行（Japan Post Bank）のキャッシュカードに記載されている記号・番号と、他行とのやりとりに使用する口座番号・支店名などを変換するライブラリ",
   "version": "0.1.0",
   "main": "index.js",
   "repository": "https://github.com/ryo-a/jpbank-number-converter.git",
