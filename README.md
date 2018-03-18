@@ -14,15 +14,13 @@
 
 ```js
 const jpbank = require('jpbank-number-converter');
-```
 
-
-```js
-var result = jpbank.convert({jjpbankSignNumber: '01940',jpbankMiddleNumber:'1',jpbankNumber:'12345'});
+var result = jpbank.convert({jjpbankSignNumber: '11940',jpbankMiddleNumber:'1',jpbankNumber:'12345'});
 // jpbankSignNumber: ゆうちょ銀行で「記号」と称される、ハイフンより前の番号
-// jpbankMiddleNumber: 01940-1-12345 のように、2つのハイフンに挟まれる番号（計算には使用しません）
+// jpbankMiddleNumber: 01940-1-12345 のように、2つのハイフンに挟まれる番号（少なくとも現時点では計算には使用していません）
 // jpbankNumber: ゆうちょ銀行で「番号」と称される、ハイフンより後の番号
 
+console.log(result.isTransferAccount); //true 振替口座であるかどうか。記号の先頭の数字が1であれば振替口座です。
 console.log(result.branchNumber); //199
 console.log(result.branchName); //一九九
 console.log(result.branchNameKatakana); //イチキユウキユウ
