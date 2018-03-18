@@ -1,6 +1,6 @@
 # jpbank-number-converter
 
-ゆうちょ銀行（Japan Post Bank）のキャッシュカードや通帳に記載されている番号と口座番号・支店名などを相互に変換するライブラリです。ゆうちょ銀行・日本郵政などとは一切関係ない非公式なものです。
+ゆうちょ銀行（Japan Post Bank）のキャッシュカードや通帳に記載されている、ゆうちょ独自の番号から他の銀行口座とやりとりする場合に使う口座番号・支店名などに変換するライブラリです。ゆうちょ銀行・日本郵政などとは一切関係ない非公式なものです。
 
 ゆうちょ銀行はその歴史的な経緯から一般的な金融機関と異なる管理番号が使用されていますが、現在は他の金融機関に準じた番号が用意されています。  
 しかしながら、利用者の手元にあるキャッシュカードからはそれが分かりづらく、[ゆうちょ銀行のサイト](https://www.jp-bank.japanpost.jp/kojin/sokin/furikomi/kouza/kj_sk_fm_kz_1.html)にて変換をする必要があります。  
@@ -18,7 +18,7 @@ const jpbank = require('jpbank-number-converter');
 ```js
 var result = jpbank.convert({jjpbankSignNumber: '01940',jpbankMiddleNumber:'1',jpbankNumber:'12345'});
 // jpbankSignNumber: ゆうちょ銀行で「記号」と称される、ハイフンより前の番号
-// jpbankMiddleNumber: 01940-1-12345 のように、2つのハイフンに挟まれる番号
+// jpbankMiddleNumber: 01940-1-12345 のように、2つのハイフンに挟まれる番号（計算には使用しません）
 // jpbankNumber: ゆうちょ銀行で「番号」と称される、ハイフンより後の番号
 
 console.log(result.branchNumber); //199
